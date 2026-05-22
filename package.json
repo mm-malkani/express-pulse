@@ -1,0 +1,35 @@
+{
+  "name": "express-pulse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mm-malkani/express-pulse.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mm-malkani/express-pulse/issues"
+  },
+  "homepage": "https://github.com/mm-malkani/express-pulse#readme",
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.9.0",
+    "express": "^5.2.1",
+    "typescript": "^6.0.3"
+  },
+  "peerDependencies": {
+    "express": "^4.0.0"
+  }
+}
