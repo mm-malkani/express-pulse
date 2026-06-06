@@ -1,13 +1,12 @@
 # express-pulse 🫀
 
-
-
 [![NPM Version](https://img.shields.io/npm/v/express-pulse?style=flat-square&color=cb3837)](https://www.npmjs.com/package/express-pulse)
 [![NPM Downloads](https://img.shields.io/npm/dw/express-pulse?style=flat-square&color=33a9dc)](https://www.npmjs.com/package/express-pulse)
 [![Dependencies](https://img.shields.io/badge/dependencies-0--none-brightgreen?style=flat-square)](https://www.npmjs.com/package/express-pulse)
 [![Bundle Size](https://img.shields.io/npm/unpacked-size/express-pulse?style=flat-square&color=44cc11)](https://bundlephobia.com/package/express-pulse)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
-[![License](https://img.shields.io/npm/l/express-pulse?style=flat-square&color=yellow)](https://github.com/mm-malkani/express-pulse/blob/main/LICENSE)
+[![License](https://img.shields.io/npm/l/express-pulse?style=flat-square&color=yellow)](https://github.com/your-username/express-pulse/blob/main/LICENSE)
+
 A lightweight, highly concurrent infrastructure monitoring middleware for Express.js. 
 
 `express-pulse` provides a plug-and-play `/health` endpoint that pings your underlying databases and caches simultaneously, returning a load-balancer-friendly JSON report. It is built with zero dependency bloat—you bring your own database drivers, and we handle the monitoring.
