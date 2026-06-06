@@ -1,9 +1,13 @@
 # express-pulse 🫀
 
-[![npm version](https://img.shields.io/npm/v/express-pulse.svg)](https://www.npmjs.com/package/express-pulse)
-[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
-[![License: ISC](https://img.shields.io/badge/License-ISC-yellow.svg)](https://opensource.org/licenses/ISC)
 
+
+[![NPM Version](https://img.shields.io/npm/v/express-pulse?style=flat-square&color=cb3837)](https://www.npmjs.com/package/express-pulse)
+[![NPM Downloads](https://img.shields.io/npm/dw/express-pulse?style=flat-square&color=33a9dc)](https://www.npmjs.com/package/express-pulse)
+[![Dependencies](https://img.shields.io/badge/dependencies-0--none-brightgreen?style=flat-square)](https://www.npmjs.com/package/express-pulse)
+[![Bundle Size](https://img.shields.io/npm/unpacked-size/express-pulse?style=flat-square&color=44cc11)](https://bundlephobia.com/package/express-pulse)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![License](https://img.shields.io/npm/l/express-pulse?style=flat-square&color=yellow)](https://github.com/mm-malkani/express-pulse/blob/main/LICENSE)
 A lightweight, highly concurrent infrastructure monitoring middleware for Express.js. 
 
 `express-pulse` provides a plug-and-play `/health` endpoint that pings your underlying databases and caches simultaneously, returning a load-balancer-friendly JSON report. It is built with zero dependency bloat—you bring your own database drivers, and we handle the monitoring.
@@ -64,12 +68,29 @@ When a load balancer, Kubernetes readiness probe, or monitoring tool hits `GET /
   ]
 }
 ```
-
 ## Available Built-In Monitors
 
-Currently supports zero-dependency adapters for:
-* **MongoDB** (`MongoMonitor`): Supports both the native `mongodb` driver and `mongoose` instances.
-* **Redis** (`RedisMonitor`): Supports standard `redis` and `ioredis` clients.
+`express-pulse` includes zero-dependency adapters for the industry's most popular infrastructure. Just pass your existing, initialized client into the constructor.
+
+**NoSQL & Caches:**
+* `MongoMonitor` (Supports Native MongoDB & Mongoose)
+* `RedisMonitor` (Supports Redis & ioredis)
+
+**Relational Databases (SQL):**
+* `PostgresMonitor` (pg)
+* `MysqlMonitor` (mysql2)
+* `MssqlMonitor` (mssql)
+
+**Message Brokers & Event Streams:**
+* `RabbitMqMonitor` (amqplib - safely uses channels)
+* `KafkaMonitor` (kafkajs - cluster metadata ping)
+
+**Search Engines & Cloud:**
+* `ElasticsearchMonitor` (@elastic/elasticsearch)
+* `S3Monitor` (AWS S3 / Cloud Storage via `HEAD` requests)
+
+**External Services:**
+* `HttpMonitor` (Generic REST API monitor via native `fetch`)
 
 ## Writing Custom Monitors
 
@@ -97,4 +118,4 @@ app.use(expressPulse({
 ```
 
 ## License
-ISC
+MIT
