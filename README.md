@@ -1,8 +1,11 @@
 # express-pulse 🫀
 
-[![npm version](https://img.shields.io/npm/v/express-pulse.svg)](https://www.npmjs.com/package/express-pulse)
-[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
-[![License: ISC](https://img.shields.io/badge/License-ISC-yellow.svg)](https://opensource.org/licenses/ISC)
+[![NPM Version](https://img.shields.io/npm/v/express-pulse?style=flat-square&color=cb3837)](https://www.npmjs.com/package/express-pulse)
+[![NPM Downloads](https://img.shields.io/npm/dw/express-pulse?style=flat-square&color=33a9dc)](https://www.npmjs.com/package/express-pulse)
+[![Dependencies](https://img.shields.io/badge/dependencies-0--none-brightgreen?style=flat-square)](https://www.npmjs.com/package/express-pulse)
+[![Bundle Size](https://img.shields.io/npm/unpacked-size/express-pulse?style=flat-square&color=44cc11)](https://bundlephobia.com/package/express-pulse)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![License](https://img.shields.io/npm/l/express-pulse?style=flat-square&color=yellow)](https://github.com/your-username/express-pulse/blob/main/LICENSE)
 
 A lightweight, highly concurrent infrastructure monitoring middleware for Express.js. 
 
@@ -18,10 +21,13 @@ A lightweight, highly concurrent infrastructure monitoring middleware for Expres
 
 ```bash
 npm install express-pulse
-Quick Start
-Initialize the middleware and pass in your active database or cache clients.
+```
 
-TypeScript
+## Quick Start
+
+Initialize the middleware and pass in your active database or cache clients. 
+
+```typescript
 import express from 'express';
 import { MongoClient } from 'mongodb';
 import { expressPulse, MongoMonitor, RedisMonitor } from 'express-pulse';
@@ -42,10 +48,13 @@ app.use(expressPulse({
 }));
 
 app.listen(3000, () => console.log('Server is running...'));
-Expected Output
-When a load balancer, Kubernetes readiness probe, or monitoring tool hits GET /health, it receives:
+```
 
-JSON
+## Expected Output
+
+When a load balancer, Kubernetes readiness probe, or monitoring tool hits `GET /health`, it receives:
+
+```json
 {
   "status": "ok",
   "timestamp": "2026-05-22T12:39:25.108Z",
@@ -57,24 +66,43 @@ JSON
     }
   ]
 }
-Available Built-In Monitors
-Currently supports zero-dependency adapters for:
+```
+## Available Built-In Monitors
 
-MongoDB (MongoMonitor): Supports both the native mongodb driver and mongoose instances.
+`express-pulse` includes zero-dependency adapters for the industry's most popular infrastructure. Just pass your existing, initialized client into the constructor.
 
-Redis (RedisMonitor): Supports standard redis and ioredis clients.
+**NoSQL & Caches:**
+* `MongoMonitor` (Supports Native MongoDB & Mongoose)
+* `RedisMonitor` (Supports Redis & ioredis)
 
-Writing Custom Monitors
-Because express-pulse is built using the Strategy Pattern, you can easily monitor anything by implementing the PulseMonitor interface.
+**Relational Databases (SQL):**
+* `PostgresMonitor` (pg)
+* `MysqlMonitor` (mysql2)
+* `MssqlMonitor` (mssql)
 
-TypeScript
+**Message Brokers & Event Streams:**
+* `RabbitMqMonitor` (amqplib - safely uses channels)
+* `KafkaMonitor` (kafkajs - cluster metadata ping)
+
+**Search Engines & Cloud:**
+* `ElasticsearchMonitor` (@elastic/elasticsearch)
+* `S3Monitor` (AWS S3 / Cloud Storage via `HEAD` requests)
+
+**External Services:**
+* `HttpMonitor` (Generic REST API monitor via native `fetch`)
+
+## Writing Custom Monitors
+
+Because `express-pulse` is built using the Strategy Pattern, you can easily monitor anything by implementing the `PulseMonitor` interface.
+
+```typescript
 import { PulseMonitor, ServiceHealth } from 'express-pulse';
 
 class StripeApiMonitor implements PulseMonitor {
     async check(): Promise<ServiceHealth> {
         const start = performance.now();
         try {
-            await fetch('[https://api.stripe.com/health](https://api.stripe.com/health)');
+            await fetch('https://api.stripe.com/health');
             return { name: 'Stripe-API', status: 'up', latency: Math.round(performance.now() - start) };
         } catch (error) {
             return { name: 'Stripe-API', status: 'down', latency: 0 };
@@ -86,13 +114,7 @@ class StripeApiMonitor implements PulseMonitor {
 app.use(expressPulse({
     monitors: [new StripeApiMonitor()]
 }));
-License
-ISC
+```
 
-
-Once you have that fully pasted and saved, open your terminal and run:
-
-1. `npm login`
-2. `npm publish`
-
-Your package will be officially live right after that!
+## License
+MIT

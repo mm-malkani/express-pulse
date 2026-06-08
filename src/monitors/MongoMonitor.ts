@@ -9,8 +9,6 @@ export class MongoMonitor implements PulseMonitor {
         this.client = client;
     }
 
-    // Your turn: add the async check() method here!
-
     async check(): Promise<ServiceHealth> {
         try {
 
