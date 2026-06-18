@@ -1,7 +1,7 @@
 {
   "name": "express-pulse",
   "version": "1.0.0",
-  "description": "",
+  "description": "A lightweight, zero-dependency infrastructure monitoring middleware for Express.js",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -16,9 +16,17 @@
     "type": "git",
     "url": "git+https://github.com/mm-malkani/express-pulse.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "express",
+    "healthcheck",
+    "middleware",
+    "monitoring",
+    "status",
+    "uptime",
+    "zero-dependency"
+  ],
+  "author": "Muhammad Malkani",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/mm-malkani/express-pulse/issues"
   },
@@ -30,6 +38,6 @@
     "typescript": "^6.0.3"
   },
   "peerDependencies": {
-    "express": "^4.0.0"
+    "express": "^4.0.0 || ^5.0.0"
   }
 }
