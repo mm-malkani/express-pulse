@@ -1,5 +1,5 @@
 {
-  "name": "express-pulse",
+  "name": "@mmalk2405/express-pulse",
   "version": "1.0.0",
   "description": "A lightweight, zero-dependency infrastructure monitoring middleware for Express.js",
   "main": "dist/index.js",
