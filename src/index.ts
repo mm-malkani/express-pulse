@@ -17,7 +17,23 @@ export { KafkaMonitor } from './monitors/KafkaMonitor';
 
 // --- Search Engines & Advanced NoSQL ---
 export { ElasticsearchMonitor } from './monitors/ElasticsearchMonitor';
+export { GraphQlMonitor } from './monitors/GraphQlMonitor';
 
 // --- Cloud & External Services ---
 export { S3Monitor } from './monitors/S3Monitor';
 export { HttpMonitor } from './monitors/HttpMonitor';
+export { DockerMonitor } from './monitors/DockerMonitor';
+
+// --- AI & LLM Monitors ---
+export { OpenAIMonitor } from './monitors/OpenAIMonitor';
+export { GeminiMonitor } from './monitors/GeminiMonitor';
+export { GroqMonitor } from './monitors/GroqMonitor';
+export { ClaudeMonitor } from './monitors/ClaudeMonitor';
+
+
+// --- Firebase ---
+export { FirebaseAdminMonitor } from './monitors/FirebaseAdminMonitor';
+
+// --- WebSocket ---
+export { WsMonitor } from './monitors/WsMonitor';
+
